@@ -26,8 +26,7 @@ data.dropna(inplace=True)
 
 # Split the data into training and testing sets
 print('Splitting data into training and testing sets...')
-X = data.drop('yield', axis=1)
-X = data.drop('year', axis=1)
+X = data.drop(['yield'], axis=1)
 y = data['yield']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -52,8 +51,18 @@ print('Ground Truth \t Prediction')
 for i in range(10):
     print(test_arr[i], '\t\t', pred_arr[i])
 
+print('Printing the predicted yield from the predicted weather the next year...')
+# unpack the weather data
+weather = pd.read_csv('weather_predictions.csv')
+# turn it into a 1D array
+weather = weather.to_numpy().reshape(1, -1)
+print(weather[0])
+# predict the yield for the next year
+next_year = rf_reg.predict(weather)
+print('Predicted yield for next year: ', next_year)
+
 # Visualize the decision tree
-plt.figure(figsize=(20,10))
+# plt.figure(figsize=(20,10))
 # plot_tree(rf_reg, filled=True)
 # plt.savefig('decision_tree2.png')
 # plt.show()

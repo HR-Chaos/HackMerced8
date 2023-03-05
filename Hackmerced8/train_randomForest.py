@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.tree import plot_tree
 import matplotlib.pyplot as plt
 import pickle
@@ -22,15 +22,15 @@ data = pd.get_dummies(data)
 data.dropna(inplace=True)
 
 # Split the data into training and testing sets
-X = data.drop('yield', axis=1)
-X = data.drop('year', axis=1)
+X = data.drop(['yield'], axis=1)
+print(X)
 y = data['yield']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=65)
 
 # Create the decision tree regressor object
 # dt_reg = DecisionTreeRegressor(random_state=42)
 # # Train a random forest model
-rf_reg = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_reg = RandomForestRegressor(n_estimators=60, random_state=65)
 
 # Train the decision tree on the training data
 rf_reg.fit(X_train, y_train)
@@ -39,9 +39,9 @@ rf_reg.fit(X_train, y_train)
 y_pred = rf_reg.predict(X_test)
 
 # Evaluate the mean squared error
+mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
-print('Mean Squared Error:', mse)
-print(y_test, ' : ',y_pred)
+print('Mean Absolute Error:', mae)
 
 # Visualize the decision tree
 plt.figure(figsize=(20,10))
