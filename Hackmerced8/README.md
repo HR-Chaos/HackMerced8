@@ -8,7 +8,8 @@ $python train_ARIMA.py
   Go to weather_predictions.csv and add a line at the beginning with the name 'data'
 
 ### Steps for Training and Running Yield Prediction Model:
-$python train_randomForest.py \n
+$python train_randomForest.py 
+
 $python test_randomForest.py 
 
 
