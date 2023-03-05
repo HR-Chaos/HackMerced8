@@ -1,0 +1,13 @@
+batch size: Batch size is a hyperparameter that determines the number of training examples used in one 
+    iteration of gradient descent during training. It defines the number of samples that will be 
+    processed by the neural network in each forward and backward pass.
+
+    Larger batch sizes are generally better for models with large training datasets and complex 
+    architectures, as they can help reduce the variance of the gradient estimates and speed up training.
+
+    Smaller batch sizes are generally better for models with smaller training datasets and simpler 
+    architectures, as they can help reduce overfitting and improve generalization performance.
+
+    You should choose a batch size that is small enough to fit into memory but large enough to take 
+    advantage of the parallelism of modern hardware. For example, a batch size of 32 or 64 is commonly 
+    used for training on a GPU.
