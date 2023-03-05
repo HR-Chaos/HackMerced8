@@ -14,3 +14,7 @@ $python test_randomForest.py
 
 
 
+## Notes:
+First we train the two AR models to predict future weather trends. Second, we add a line to weather_predictions.csv so that train_randomForest.py can read it. Third, we run train_randomForest.py and train a randomForest that can predict the weather
+
+
